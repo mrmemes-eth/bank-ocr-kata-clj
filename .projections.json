@@ -1,0 +1,5 @@
+{
+  "fixtures/*.txt": {
+    "command": "fixtures",
+  },
+}
