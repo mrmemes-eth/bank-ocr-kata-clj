@@ -7,4 +7,5 @@
                                    (pjstadig.humane-test-output/activate!)]
                      :resource-paths ["fixtures"]
                      :dependencies [[pjstadig/humane-test-output  "0.6.0"]]}}
-  :dependencies [[org.clojure/clojure "1.5.1"]])
+  :dependencies [[org.clojure/clojure "1.5.1"]]
+  :main bank-ocr.core)
