@@ -1,4 +1,4 @@
-(ns bank-ocr.parse)
+(ns bank-ocr.parser)
 
 (defn parse [ocr-text]
   (map #(re-seq #"." %)

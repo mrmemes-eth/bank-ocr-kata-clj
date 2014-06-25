@@ -1,6 +1,6 @@
-(ns bank-ocr.parse-test
+(ns bank-ocr.parser-test
   (:require [clojure.test :refer :all]
-            [bank-ocr.parse :refer :all]))
+            [bank-ocr.parser :refer :all]))
 
 (def zero-to-nine (slurp "fixtures/one_to_nine.txt"))
 
