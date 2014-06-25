@@ -2,60 +2,30 @@
   (:require [clojure.test :refer :all]
             [bank-ocr.interpreter :refer :all]))
 
-;; verify matrix to digit conversion
-(is (= 0 (matrix->digit zero)))
-(is (= 1 (matrix->digit one)))
-(is (= 2 (matrix->digit two)))
-(is (= 3 (matrix->digit three)))
-(is (= 4 (matrix->digit four)))
-(is (= 5 (matrix->digit five)))
-(is (= 6 (matrix->digit six)))
-(is (= 7 (matrix->digit seven)))
-(is (= 8 (matrix->digit eight)))
-(is (= 9 (matrix->digit nine)))
+(deftest matrix-to-digit-conversion
+  (are [matrix digit] (= (matrix->digit matrix) digit)
+        zero   0
+        one    1
+        two    2
+        three  3
+        four   4
+        five   5
+        six    6
+        seven  7
+        eight  8
+        nine   9))
 
-;; verify matrices to account number conversion
-
-(is (=
-     (matrices->account-number [zero zero zero zero zero zero zero zero zero])
-     "000000000"))
-
-(is (=
-     (matrices->account-number [one one one one one one one one one])
-     "111111111"))
-
-(is (=
-     (matrices->account-number [two two two two two two two two two])
-     "222222222"))
-
-(is (=
-     (matrices->account-number [three three three three three three three three three])
-     "333333333"))
-
-(is (=
-     (matrices->account-number [four four four four four four four four four])
-     "444444444"))
-
-(is (=
-     (matrices->account-number [five five five five five five five five five])
-     "555555555"))
-
-(is (=
-     (matrices->account-number [six six six six six six six six six])
-     "666666666"))
-
-(is (=
-     (matrices->account-number [seven seven seven seven seven seven seven seven seven])
-     "777777777"))
-
-(is (=
-     (matrices->account-number [eight eight eight eight eight eight eight eight eight])
-     "888888888"))
-
-(is (=
-     (matrices->account-number [nine nine nine nine nine nine nine nine nine])
-     "999999999"))
-
-(is (=
-     (matrices->account-number [one two three four five six seven eight nine])
-     "123456789"))
+(deftest verify-matrices-to-account-number-string-conversion
+  (are [account-number matrices]
+       (= (matrices->account-number matrices) account-number)
+       "000000000" [zero zero zero zero zero zero zero zero zero]
+       "111111111" [one one one one one one one one one]
+       "222222222" [two two two two two two two two two]
+       "333333333" [three three three three three three three three three]
+       "444444444" [four four four four four four four four four]
+       "555555555" [five five five five five five five five five]
+       "666666666" [six six six six six six six six six]
+       "777777777" [seven seven seven seven seven seven seven seven seven]
+       "888888888" [eight eight eight eight eight eight eight eight eight]
+       "999999999" [nine nine nine nine nine nine nine nine nine]
+       "123456789" [one two three four five six seven eight nine]))
