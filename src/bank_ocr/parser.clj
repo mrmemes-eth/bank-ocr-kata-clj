@@ -1,8 +1,9 @@
-(ns bank-ocr.parser)
+(ns bank-ocr.parser
+  (:require [clojure.string :refer [split]]))
 
 (defn parse [ocr-text]
   (map #(re-seq #"." %)
-       (clojure.string/split ocr-text #"\n")))
+       (split ocr-text #"\n")))
 
 (defn matrices [parsed]
   (apply mapv vector (map #(partition 3 %) parsed)))
