@@ -57,3 +57,6 @@
 
 (defn matrix->digit [matrix]
   (get digits matrix))
+
+(defn matrices->account-number [matrices]
+  (apply str (map matrix->digit matrices)))
