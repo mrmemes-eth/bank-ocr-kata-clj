@@ -1,5 +1,4 @@
-(ns bank-ocr.interpreter
-  (:require [clojure.string :refer [split]]))
+(ns bank-ocr.interpreter)
 
 (defmacro defascii [number-name & ascii]
   `(def ~number-name (map #(re-seq #"." %) '~ascii)))

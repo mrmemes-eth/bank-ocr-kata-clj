@@ -1,7 +1,7 @@
 (ns bank-ocr.core
   (:require [bank-ocr.parser :as parser]
             [bank-ocr.interpreter :as interpreter]
-            [clojure.string :refer [split join]]))
+            [clojure.string :refer [split]]))
 
 (defn -main [path]
   (doseq [ocr-account-number (split (slurp path) #"\n\n")]
