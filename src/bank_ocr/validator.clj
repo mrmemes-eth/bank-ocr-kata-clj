@@ -6,6 +6,8 @@
        (reduce +)))
 
 (defn valid? [account-number-vector]
-  (-> (checksum account-number-vector)
-      (mod 11)
-      (= 0)))
+  (and
+   (not (some #{"?"} account-number-vector))
+   (-> (checksum account-number-vector)
+       (mod 11)
+       (= 0))))
