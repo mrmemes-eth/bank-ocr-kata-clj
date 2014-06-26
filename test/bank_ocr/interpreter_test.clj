@@ -2,8 +2,13 @@
   (:require [clojure.test :refer :all]
             [bank-ocr.interpreter :refer :all]))
 
+(defascii ill
+  "  |"
+  "  |"
+  "  |")
+
 (deftest matrix-to-digit-conversion
-  (are [matrix digit] (= (matrix->digit matrix) digit)
+  (are [matrix digit] (= digit (matrix->digit matrix))
         zero   0
         one    1
         two    2
@@ -13,7 +18,8 @@
         six    6
         seven  7
         eight  8
-        nine   9))
+        nine   9
+        ill   "?"))
 
 (deftest verify-matrices-to-account-number-string-conversion
   (are [account-number matrices]
