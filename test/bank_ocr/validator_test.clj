@@ -13,3 +13,15 @@
        (checksum [1 2 3 4 5 6 7 8 0])
        (checksum [6 6 4 3 7 1 4 9 5])
        (checksum [9 8 7 6 5 4 3 2 1])))
+
+(deftest valid-account-numbers
+  (are [-vector] (valid? -vector)
+       [0 0 0 0 0 0 0 5 1]
+       [3 4 5 8 8 2 8 6 5]
+       [4 5 7 5 0 8 0 0 0]))
+
+(deftest invalid-account-numbers
+  (are [-vector] (not (valid? -vector))
+       [1 2 3 4 5 6 7 8 0]
+       [6 6 4 3 7 1 4 9 5]
+       [9 8 7 6 5 4 3 2 1]))
