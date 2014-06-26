@@ -18,14 +18,14 @@
 (deftest verify-matrices-to-account-number-string-conversion
   (are [account-number matrices]
        (= (matrices->account-number matrices) account-number)
-       "000000000" [zero zero zero zero zero zero zero zero zero]
-       "111111111" [one one one one one one one one one]
-       "222222222" [two two two two two two two two two]
-       "333333333" [three three three three three three three three three]
-       "444444444" [four four four four four four four four four]
-       "555555555" [five five five five five five five five five]
-       "666666666" [six six six six six six six six six]
-       "777777777" [seven seven seven seven seven seven seven seven seven]
-       "888888888" [eight eight eight eight eight eight eight eight eight]
-       "999999999" [nine nine nine nine nine nine nine nine nine]
-       "123456789" [one two three four five six seven eight nine]))
+       [0 0 0 0 0 0 0 0 0] [zero zero zero zero zero zero zero zero zero]
+       [1 1 1 1 1 1 1 1 1] [one one one one one one one one one]
+       [2 2 2 2 2 2 2 2 2] [two two two two two two two two two]
+       [3 3 3 3 3 3 3 3 3] [three three three three three three three three three]
+       [4 4 4 4 4 4 4 4 4] [four four four four four four four four four]
+       [5 5 5 5 5 5 5 5 5] [five five five five five five five five five]
+       [6 6 6 6 6 6 6 6 6] [six six six six six six six six six]
+       [7 7 7 7 7 7 7 7 7] [seven seven seven seven seven seven seven seven seven]
+       [8 8 8 8 8 8 8 8 8] [eight eight eight eight eight eight eight eight eight]
+       [9 9 9 9 9 9 9 9 9] [nine nine nine nine nine nine nine nine nine]
+       [1 2 3 4 5 6 7 8 9] [one two three four five six seven eight nine]))

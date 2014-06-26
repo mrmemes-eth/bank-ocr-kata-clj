@@ -5,7 +5,8 @@
 
 (defn -main [path]
   (doseq [ocr-account-number (split (slurp path) #"\n\n")]
-    (println (-> ocr-account-number
-                 (parser/parse)
-                 (parser/matrices)
-                 (interpreter/matrices->account-number)))))
+    (println (->> ocr-account-number
+                  (parser/parse)
+                  (parser/matrices)
+                  (interpreter/matrices->account-number)
+                  (apply str)))))

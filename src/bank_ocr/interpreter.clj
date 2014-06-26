@@ -61,4 +61,4 @@
   (get digits matrix))
 
 (defn matrices->account-number [matrices]
-  (apply str (map matrix->digit matrices)))
+  (map matrix->digit matrices))
