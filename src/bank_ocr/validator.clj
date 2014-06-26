@@ -5,9 +5,12 @@
        (map-indexed #(* (inc %1) %2))
        (reduce +)))
 
+(defn legible? [account-number-vector]
+  (not (some #{"?"} account-number-vector)))
+
 (defn valid? [account-number-vector]
   (and
-   (not (some #{"?"} account-number-vector))
+   (legible? account-number-vector)
    (-> (checksum account-number-vector)
        (mod 11)
        (= 0))))
