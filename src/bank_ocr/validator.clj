@@ -14,3 +14,7 @@
    (-> (checksum account-number-vector)
        (mod 11)
        (= 0))))
+
+(defn error-description [account-number-vector]
+  (cond (not (legible? account-number-vector)) "ILL"
+        (not (valid? account-number-vector)) "ERR"))
