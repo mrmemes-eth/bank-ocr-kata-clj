@@ -1,55 +1,58 @@
 (ns bank-ocr.interpreter
-  (:require [clojure.string :refer [join split]]))
+  (:require [clojure.string :refer [split]]))
 
-(def zero
-  [[" " "_" " "]
-   ["|" " " "|"]
-   ["|" "_" "|"]])
+(defmacro defascii [number-name & ascii]
+  `(def ~number-name (map #(re-seq #"." %) '~ascii)))
 
-(def one
-  [[" " " " " "]
-   [" " " " "|"]
-   [" " " " "|"]])
+(defascii zero
+  " _ "
+  "| |"
+  "|_|")
 
-(def two
-  [[" " "_" " "]
-   [" " "_" "|"]
-   ["|" "_" " "]])
+(defascii one
+  "   "
+  "  |"
+  "  |")
 
-(def three
-  [[" " "_" " "]
-   [" " "_" "|"]
-   [" " "_" "|"]])
+(defascii two
+  " _ "
+  " _|"
+  "|_ ")
 
-(def four
-  [[" " " " " "]
-   ["|" "_" "|"]
-   [" " " " "|"]])
+(defascii three
+  " _ "
+  " _|"
+  " _|")
 
-(def five
-  [[" " "_" " "]
-   ["|" "_" " "]
-   [" " "_" "|"]])
+(defascii four
+  "   "
+  "|_|"
+  "  |")
 
-(def six
-  [[" " "_" " "]
-   ["|" "_" " "]
-   ["|" "_" "|"]])
+(defascii five
+  " _ "
+  "|_ "
+  " _|")
 
-(def seven
-  [[" " "_" " "]
-   [" " " " "|"]
-   [" " " " "|"]])
+(defascii six
+  " _ "
+  "|_ "
+  "|_|")
 
-(def eight
-  [[" " "_" " "]
-   ["|" "_" "|"]
-   ["|" "_" "|"]])
+(defascii seven
+  " _ "
+  "  |"
+  "  |")
 
-(def nine
-  [[" " "_" " "]
-   ["|" "_" "|"]
-   [" " "_" "|"]])
+(defascii eight
+  " _ "
+  "|_|"
+  "|_|")
+
+(defascii nine
+  " _ "
+  "|_|"
+  " _|")
 
 (def digits
   {zero 0 one  1 two   2 three 3 four 4
