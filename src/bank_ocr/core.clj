@@ -29,5 +29,3 @@
          (validated-account-number)
          (apply str)
          (println))))
-
-(apply str (validated-account-number [0 0 0 0 0 0 0 5 "?"]) )

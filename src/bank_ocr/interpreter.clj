@@ -1,61 +1,71 @@
 (ns bank-ocr.interpreter)
 
-(defmacro defascii [number-name & ascii]
-  `(def ~number-name (map #(re-seq #"." %) '~ascii)))
+(defn ascii [& lines]
+  (mapv #(re-seq #"." %) lines))
 
-(defascii zero
-  " _ "
-  "| |"
-  "|_|")
 
-(defascii one
-  "   "
-  "  |"
-  "  |")
+(def zero (ascii
+           " _ "
+           "| |"
+           "|_|"))
 
-(defascii two
-  " _ "
-  " _|"
-  "|_ ")
+(def one (ascii
+          "   "
+          "  |"
+          "  |"))
 
-(defascii three
-  " _ "
-  " _|"
-  " _|")
+(def two (ascii
+          " _ "
+          " _|"
+          "|_ "))
 
-(defascii four
-  "   "
-  "|_|"
-  "  |")
+(def three (ascii
+            " _ "
+            " _|"
+            " _|"))
 
-(defascii five
-  " _ "
-  "|_ "
-  " _|")
+(def four (ascii
+           "   "
+           "|_|"
+           "  |"))
 
-(defascii six
-  " _ "
-  "|_ "
-  "|_|")
+(def five (ascii
+           " _ "
+           "|_ "
+           " _|"))
 
-(defascii seven
-  " _ "
-  "  |"
-  "  |")
+(def six (ascii
+          " _ "
+          "|_ "
+          "|_|"))
 
-(defascii eight
-  " _ "
-  "|_|"
-  "|_|")
+(def seven (ascii
+            " _ "
+            "  |"
+            "  |"))
 
-(defascii nine
-  " _ "
-  "|_|"
-  " _|")
+(def eight (ascii
+            " _ "
+            "|_|"
+            "|_|"))
+
+(def nine (ascii
+           " _ "
+           "|_|"
+           " _|"))
 
 (def digits
-  {zero 0 one  1 two   2 three 3 four 4
-   five 5 six  6 seven 7 eight 8 nine 9})
+  (-> {}
+      (assoc zero 0)
+      (assoc one 1)
+      (assoc two 2)
+      (assoc three 3)
+      (assoc four 4)
+      (assoc five 5)
+      (assoc six 6)
+      (assoc seven 7)
+      (assoc eight 8)
+      (assoc nine 9)))
 
 (defn matrix->digit [matrix]
   (get digits matrix "?"))

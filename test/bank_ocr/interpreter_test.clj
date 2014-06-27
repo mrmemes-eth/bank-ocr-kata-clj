@@ -2,10 +2,10 @@
   (:require [clojure.test :refer :all]
             [bank-ocr.interpreter :refer :all]))
 
-(defascii ill
-  "  |"
-  "  |"
-  "  |")
+(def ill (ascii
+          "  |"
+          "  |"
+          "  |"))
 
 (deftest matrix-to-digit-conversion
   (are [matrix digit] (= digit (matrix->digit matrix))
