@@ -10,6 +10,10 @@ Specifically:
 
 `lein run fixtures/ocr_account_numbers.txt`
 
+To run the converter with validation output use:
+
+`lein run -m bank-ocr.core/-validate path/to/file.ext`
+
 ## License
 
 See LICENSE

@@ -20,3 +20,14 @@
 (deftest test-output
   (is (= expected-output
        (with-out-str (-main (io/resource "ocr_account_numbers.txt"))))))
+
+(def validated-output
+"000000051
+49006771? ILL
+1234?678? ILL
+664371495 ERR
+")
+
+(deftest test-validated-output
+  (is (= validated-output
+       (with-out-str (-validate (io/resource "user_story_3.txt"))))))
