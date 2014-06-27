@@ -61,4 +61,4 @@
   (get digits matrix "?"))
 
 (defn matrices->account-number [matrices]
-  (map matrix->digit matrices))
+  (vec (map matrix->digit matrices)))
