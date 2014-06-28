@@ -10,7 +10,7 @@
       (parser/matrices)
       (interpreter/matrices->account-number)))
 
-(defn validated-account-number [number-vector]
+(defn- validated-account-number [number-vector]
   (->> number-vector
        (validator/error-description)
        (conj number-vector)))
