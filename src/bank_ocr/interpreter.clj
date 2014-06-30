@@ -55,17 +55,8 @@
            " _|"))
 
 (def digits
-  (-> {}
-      (assoc zero 0)
-      (assoc one 1)
-      (assoc two 2)
-      (assoc three 3)
-      (assoc four 4)
-      (assoc five 5)
-      (assoc six 6)
-      (assoc seven 7)
-      (assoc eight 8)
-      (assoc nine 9)))
+  { zero 0, one 1, two 2, three 3, four 4
+    five 5, six 6, seven 7, eight 8, nine 9 })
 
 (defn matrix->digit [matrix]
   (get digits matrix "?"))
