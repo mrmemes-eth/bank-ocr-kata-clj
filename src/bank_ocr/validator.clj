@@ -6,7 +6,7 @@
        (reduce +)))
 
 (defn legible? [account-number-vector]
-  (not (some #{"?"} account-number-vector)))
+  (not (contains? (set account-number-vector) "?")))
 
 (defn valid? [account-number-vector]
   (and
@@ -16,5 +16,5 @@
        (= 0))))
 
 (defn error-description [account-number-vector]
-  (cond (not (legible? account-number-vector)) " ILL"
-        (not (valid? account-number-vector)) " ERR"))
+  (cond (not (legible? account-number-vector)) "ILL"
+        (not (valid? account-number-vector)) "ERR"))

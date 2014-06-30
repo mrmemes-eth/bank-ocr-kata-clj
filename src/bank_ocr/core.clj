@@ -11,21 +11,17 @@
       (interpreter/matrices->account-number)))
 
 (defn- validated-account-number [number-vector]
-  (->> number-vector
-       (validator/error-description)
-       (conj number-vector)))
+  (if-let [error-desc (validator/error-description number-vector)]
+    (conj number-vector " " error-desc)
+    number-vector))
 
 (defn -main [path]
   (doseq [ocr-account-number (split (slurp path) #"\n\n")]
-    (->> ocr-account-number
-         (account-number-ocr->vector)
-         (apply str)
-         (println))))
+    (println (->> (account-number-ocr->vector ocr-account-number)
+                  (apply str)))))
 
 (defn -validate [path]
   (doseq [ocr-account-number (split (slurp path) #"\n\n")]
-    (->> ocr-account-number
-         (account-number-ocr->vector)
-         (validated-account-number)
-         (apply str)
-         (println))))
+    (println (->> (account-number-ocr->vector ocr-account-number)
+                  (validated-account-number)
+                  (apply str)))))

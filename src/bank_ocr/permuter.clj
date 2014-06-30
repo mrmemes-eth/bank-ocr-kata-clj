@@ -20,5 +20,4 @@
   (->> matrix
        (matrix->flat-matrix)
        (permute)
-       (map flat-matrix->digit)
-       (filter (comp not nil?))))
+       (keep flat-matrix->digit)))
