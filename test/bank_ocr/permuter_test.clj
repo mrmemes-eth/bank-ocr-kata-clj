@@ -1,6 +1,6 @@
 (ns bank-ocr.permuter-test
   (:require [clojure.test :refer :all]
-            [bank-ocr.interpreter :refer [ascii]]
+            [bank-ocr.interpreter :refer :all]
             [bank-ocr.permuter :refer :all]))
 
 (def ninish (ascii
@@ -8,9 +8,14 @@
              "|_|"
              " _|"))
 
-(permute ninish)
+(def sevenish (ascii
+               " _ "
+               "  |"
+               "   "))
 
 (deftest permuting-known-chars
-  (is (contains? [9] (permutations ninish))))
-
+  (are [perms matrix] (= perms (permutations matrix))
+       [9,4]   ninish
+       [7]     sevenish
+       [0,6,9] eight))
 
