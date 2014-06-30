@@ -2,8 +2,7 @@
   (:require [clojure.string :refer [split-lines]]))
 
 (defn parse [ocr-text]
-  (map #(re-seq #"." %)
-       (split-lines ocr-text)))
+  (split-lines ocr-text))
 
 (defn matrices [parsed]
-  (apply mapv vector (map #(partition 3 %) parsed)))
+  (apply map list (map (partial partition 3) parsed)))

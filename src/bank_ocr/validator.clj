@@ -6,7 +6,7 @@
        (reduce +)))
 
 (defn legible? [account-number-vector]
-  (not (contains? (set account-number-vector) "?")))
+  (not (contains? (set account-number-vector) \?)))
 
 (defn valid? [account-number-vector]
   (and

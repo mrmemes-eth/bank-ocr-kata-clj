@@ -12,7 +12,7 @@
 
 (defn- validated-account-number [number-vector]
   (if-let [error-desc (validator/error-description number-vector)]
-    (conj number-vector " " error-desc)
+    (conj number-vector \space error-desc)
     number-vector))
 
 (defn -main [path]

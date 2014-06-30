@@ -19,7 +19,7 @@
         seven  7
         eight  8
         nine   9
-        ill   "?"))
+        ill   \?))
 
 (deftest verify-matrices-to-account-number-string-conversion
   (are [account-number matrices]
@@ -35,4 +35,4 @@
        [8 8 8 8 8 8 8 8 8] [eight eight eight eight eight eight eight eight eight]
        [9 9 9 9 9 9 9 9 9] [nine nine nine nine nine nine nine nine nine]
        [1 2 3 4 5 6 7 8 9] [one two three four five six seven eight nine]
-       [4 9 0 0 6 7 7 1 "?"] [four nine zero zero six seven seven one ill]))
+       [4 9 0 0 6 7 7 1 \?] [four nine zero zero six seven seven one ill]))

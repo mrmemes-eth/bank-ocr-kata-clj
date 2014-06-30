@@ -1,23 +1,19 @@
 (ns bank-ocr.permuter
   (:require [bank-ocr.interpreter :refer [digits]]))
 
-(defn- matrix->flat-matrix [matrix]
-  (vec (flatten matrix)))
-
 (defn- transpose [transpose-character character]
-  (get {transpose-character " ", " " transpose-character} character))
+  (get {transpose-character \space, \space transpose-character} character))
 
-(defn- permute-char [flat-matrix character]
-  (map-indexed #(assoc flat-matrix %1 (transpose character %2)) flat-matrix))
+(defn- permute-char [char-vec character]
+  (map-indexed #(assoc char-vec %1 (transpose character %2)) char-vec))
 
-(defn- flat-matrix->digit [flat-matrix]
-  (get digits (partition 3 flat-matrix)))
+(defn- permute [char-vec]
+  (mapcat #(permute-char char-vec %) [\| \_]))
 
-(defn- permute [flat-matrix]
-  (mapcat #(permute-char flat-matrix %) ["|" "_"]))
+(defn- char-vec->digit [char-vec]
+  (get digits (partition 3 char-vec)))
 
 (defn permutations [matrix]
-  (->> matrix
-       (matrix->flat-matrix)
+  (->> (vec (flatten matrix))
        (permute)
-       (keep flat-matrix->digit)))
+       (keep char-vec->digit)))
