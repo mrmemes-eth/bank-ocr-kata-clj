@@ -10,11 +10,15 @@
 (defn- permute [char-vec]
   (mapcat #(permute-char char-vec %) [\| \_]))
 
-(defn- char-vec->digit [char-vec]
-  (get digits (partition 3 char-vec)))
+(defn- char-vec->matrix [char-vec]
+  (partition 3 char-vec))
+
+(defn- valid-matrix? [matrix]
+  (contains? digits matrix))
 
 (defn permutations [matrix]
   (->> (vec (flatten matrix))
        (permute)
-       (keep char-vec->digit)))
+       (map char-vec->matrix)
+       (filter valid-matrix?)))
 

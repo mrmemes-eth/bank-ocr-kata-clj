@@ -15,7 +15,7 @@
 
 (deftest permuting-known-chars
   (are [perms matrix] (= perms (permutations matrix))
-       [9,4]   ninish
-       [7]     sevenish
-       [6,9,0] eight))
+       [nine, four]      ninish
+       [seven]           sevenish
+       [six, nine, zero] eight))
 
