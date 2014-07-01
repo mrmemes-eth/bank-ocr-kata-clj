@@ -25,3 +25,4 @@
     (println (->> (account-number-ocr->vector ocr-account-number)
                   (validated-account-number)
                   (apply str)))))
+

@@ -63,3 +63,4 @@
 
 (defn matrices->account-number [matrices]
   (mapv matrix->digit matrices))
+

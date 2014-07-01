@@ -17,3 +17,4 @@
   (->> (vec (flatten matrix))
        (permute)
        (keep char-vec->digit)))
+

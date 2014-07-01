@@ -18,3 +18,4 @@
 (defn error-description [account-number-vector]
   (cond (not (legible? account-number-vector)) "ILL"
         (not (valid? account-number-vector)) "ERR"))
+
